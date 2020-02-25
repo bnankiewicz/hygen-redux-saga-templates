@@ -1,0 +1,77 @@
+#+TITLE: Redux Templates
+
+* Packages used
+** typesafe-actions
+https://github.com/piotrwitek/typesafe-actions
+** redux
+https://github.com/reduxjs/redux
+** redux-saga
+https://github.com/redux-saga/redux-saga
+** reselect
+https://github.com/reduxjs/reselect
+* TODO Generated structure description
+* Generators
+** COMMENT Generate templates folder structure
+#+BEGIN_SRC sh :results raw
+tree -d --noreport -i
+#+END_SRC
+** TODO store
+Create template for adding store to project
+** module
+*** new
+Creates new module and connects it to store. Every module is constructed from
+following files:
+- actions.ts
+- constants.ts
+- effects.ts
+- index.ts
+- reducers.ts
+- selectors.ts
+- types.ts
+
+*** Usage
+#+BEGIN_SRC sh
+hygen module new --name entries
+#+END_SRC
+** action
+*** action
+Creates simple action without payload and connects it to reducer.
+*** action-with-payload
+Creates simple action with payload and connects it to reducer.
+*** async-action
+Creates asynchronous action with payload and connects it to reducer.
+Every action has following sub-types:
+- REQUEST
+- SUCCESS
+- ERROR
+- CANCEL
+
+*** Usage
+#+BEGIN_SRC sh
+hygen action async-action --moduleKind modules --moduleName entries --name addEntry
+#+END_SRC
+** effect
+*** new
+Creates saga for given action.
+
+*** Usage
+#+BEGIN_SRC sh
+hygen effect new --moduleKind modules --moduleName entries --name addEntry
+#+END_SRC
+** TODO reducer
+*** new
+Creates
+** selector
+*** memoized
+Creates memoized selector for given module.
+*** simple
+Creates simple selector for given module.
+
+*** Usage
+#+BEGIN_SRC sh
+hygen selector memoized --moduleKind modules --moduleName entries --name getEntries
+#+END_SRC
+* Editor tooling
+** IN-PROGRESS Emacs
+- [ ] refactor and write documentation
+- [ ] publish
